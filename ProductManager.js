@@ -1,6 +1,6 @@
 import {promises as fs} from "fs"
 
-class ProductManager {
+export default class ProductManager {
     constructor(){
         this.patch= "./productos.txt";
         this.products =[]
@@ -40,7 +40,7 @@ class ProductManager {
     getProductsByID = async (id) => {
         let respuesta3 = await this.readProducts();
         if (!respuesta3.find((product) => product.id === id)) {
-            //console.log("Producto no encontrado");
+            console.log("Producto no encontrado");
         } else {
             console.log(respuesta3.find((product) => product.id ===id));
         }
@@ -58,7 +58,7 @@ class ProductManager {
         let productold = await this.readProducts()
         let productsModif = [{ ...producto, id}, ...productold];
         await fs.writeFile(this.patch, JSON.stringify(productsModif));
-        console.log("Producto actualizado")         
+        //console.log("Producto actualizado")         
     };
 
 
@@ -67,17 +67,26 @@ class ProductManager {
 
 const productos = new ProductManager
 
-/*productos.addProduct("Titulo1", "Description1", 1000, "image1", "abc123", 10)
-productos.addProduct("Titulo2", "Description2", 2000, "image2", "abc1234", 100)
-productos.addProduct("Titulo3", "Description3", 3000, "image3", "abc12345", 1000); */
 
-//productos.getProducts()
+productos.addProduct("Titulo1", "Description1", 1000, "image1", "abc121", 10)
+productos.addProduct("Titulo2", "Description2", 2000, "image2", "abc122", 100)
+productos.addProduct("Titulo3", "Description3", 3000, "image3", "abc123", 1000)
+productos.addProduct("Titulo4", "Description4", 3000, "image4", "abc124", 1000)
+productos.addProduct("Titulo5", "Description5", 3000, "image5", "abc125", 1000)
+productos.addProduct("Titulo6", "Description6", 3000, "image6", "abc126", 1000)
+productos.addProduct("Titulo7", "Description7", 3000, "image7", "abc127", 1000)
+productos.addProduct("Titulo8", "Description8", 3000, "image8", "abc128", 1000)
+productos.addProduct("Titulo9", "Description9", 3000, "image9", "abc129", 1000)
+productos.addProduct("Titulo10", "Description10", 3000, "image10", "abc130", 1000);
 
-//productos.getProductsByID(2)
+
+//productos.getProducts();
+
+//productos.getProductsByID(9)
 
 //productos.deleteProductById(2)
 
-productos.updateProducts({
+/*productos.updateProducts({
             title: "Titulo2",
             description: "Description2",
             price: 100000000000000,
@@ -85,4 +94,4 @@ productos.updateProducts({
             code: "abc1234",
             stock: 100,
             id: 2
-})
+})*/
